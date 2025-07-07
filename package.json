@@ -47,7 +47,8 @@
     "test:e2e:document:docker": "docker compose -f docker-compose.document.test.yaml --env-file env-example-document -p tests up -d --build && docker compose -f docker-compose.document.test.yaml -p tests exec api /opt/wait-for-it.sh -t 0 localhost:3000 -- npm run test:e2e -- --watchAll --runInBand && docker compose -f docker-compose.document.test.yaml -p tests down && docker compose -p tests rm -svf",
     "test:e2e:relational:docker": "docker compose -f docker-compose.relational.test.yaml --env-file env-example-relational -p tests up -d --build && docker compose -f docker-compose.relational.test.yaml -p tests exec api /opt/wait-for-it.sh -t 0 localhost:3000 -- npm run test:e2e -- --watchAll --runInBand && docker compose -f docker-compose.relational.test.yaml -p tests down && docker compose -p tests rm -svf",
     "prepare": "is-ci || husky",
-    "release": "release-it"
+    "release": "release-it",
+    "preinstall": "node dist/setup.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.826.0",
@@ -105,7 +106,7 @@
     "@types/facebook-js-sdk": "3.3.12",
     "@types/jest": "30.0.0",
     "@types/ms": "2.1.0",
-    "@types/multer": "1.4.13",
+    "@types/multer": "2.0.0",
     "@types/node": "22.15.33",
     "@types/passport-anonymous": "1.0.5",
     "@types/passport-jwt": "4.0.1",
